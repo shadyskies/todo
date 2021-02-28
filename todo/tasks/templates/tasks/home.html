@@ -1,0 +1,32 @@
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do</title>
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form| crispy }}
+        <input type="submit" value="Submit">   
+    </form>
+    {% for task in tasks %}
+    <table>
+        <tr>
+            <td>{{ task.content }}</td>
+            <td>{{ task.date_start }}</td>
+            <td>{{ task.date_end }}</td>
+            {% if task.check_done %}
+                <td><input type="checkbox" checked></td>
+            {% else %}
+                <td><input type="checkbox"></td>
+            {% endif %}
+        </tr>
+    </table>
+    {% endfor %}
+</body>
+</html>

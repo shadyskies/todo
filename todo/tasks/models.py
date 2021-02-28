@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 
 
 class Task(models.Model):
-    content = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.CharField(max_length=100)
     date_start = models.DateTimeField(default=timezone.now)
     date_end = models.DateTimeField()
     check_done = models.BooleanField(default=False)

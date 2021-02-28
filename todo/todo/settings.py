@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'users.apps.UsersConfig',
     'tasks.apps.TasksConfig',
+    'crispy_forms',
+    
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = 'home'
+
+LOGIN_URl = 'login'
