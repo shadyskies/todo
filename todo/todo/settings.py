@@ -129,3 +129,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 LOGIN_REDIRECT_URL = 'home'
 
 LOGIN_URl = 'login'
+
+# deployment
+import django_heroku
+django_heroku.settings(locals())
