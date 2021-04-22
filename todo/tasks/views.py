@@ -4,6 +4,9 @@ from django.views.generic import CreateView
 from .forms import Create_task
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .serializers import  TaskSerializer
+from .models import Task
+from rest_framework import viewsets, permissions
 
 
 @login_required(login_url='login/')
@@ -39,3 +42,9 @@ def task_status(request, pk):
 
 def update_task_status(request):
     print(request.POST.getlist('check_done'))
+
+
+class TaskViewSet(viewsets.ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+    permissions_classes = [permissions.IsAuthenticatedOrReadOnly]
